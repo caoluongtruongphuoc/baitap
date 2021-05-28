@@ -1,0 +1,56 @@
+<div>
+    <input type="text" id="key-search" placeholder="Search by key name product" 
+    data-bind='event: {keyup: getListSearch}'/>
+    <div class="pre" data-bind="foreach: productList"> 
+        <div class="pre--img">
+            <img src="" alt="" data-bind="attr: {src: srcthumbnail}" >
+        </div>
+        <div class="pre--info">
+            <input type="hidden" data-bind="value: entity_id"/>
+            <div class="pre--info__name" data-bind="text: name"></div>
+            <div class="pre--info__sku">
+                <div>SKU#</div>
+                <div data-bind="text: sku"></div>
+            </div>
+            <div class="pre--info__price" data-bind="text: priceSymbol"></div>
+        </div>
+        <input type="checkbox" data-bind="attr: {id: sku}, checked: isChecked, event: {change: $parent.changeCheckedList}"/>
+    </div>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>SKU</th>
+            <th>PRODUCT</th>
+            <th>QTY</th>
+            <th>SUBTOTAL</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: checkedList">
+        <tr>
+            <td data-bind="text: product().sku"></td>
+            <td>
+                <span><img src="" data-bind="attr: {src: product().srcsmall}" alt=""></span>
+                <span>
+                    <div data-bind="text: product().name"></div>
+                    <div data-bind="text: product().priceSymbol"></div>
+                </span>
+                <span><button type="button" data-bind="click: $parent.deleteChecked">Delete</button></span>
+            </td>
+            <td>
+                <button type="button" data-bind="click: minus">Minus</button>
+                <input type="number" data-bind="value: qty"/>
+                <button type="button" data-bind="click: plus">Plus</button>
+            </td>
+            <td data-bind="text: showSub"></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">Filled line number: <span data-bind="text: line"></span></td>
+            <td>Total Qty: <span data-bind="text: totalQty"></span></td>
+            <td>Sub Total: <span data-bind="text: subTotal"></span></td>
+        </tr>
+    </tfoot>
+</table>
+<button type="button" data-bind="click: addToCart, visible: checkedList().length > 0">Add to cart</button>
