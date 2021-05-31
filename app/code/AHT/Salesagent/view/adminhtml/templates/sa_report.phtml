@@ -1,0 +1,62 @@
+<?php
+/** @var \AHT\Salesagent\Block\Template $block */
+
+$list = $block->getSalesAgent();
+?>
+
+<div class="template">
+    <div>
+        <label for="EmailSearch" class="admin__control-support-text">Email sale agent:</label>
+        <input type="text" class="input-text required-entry admin__control-text" id="EmailSearch">
+        <button class="action-default" type="button">Refresh</button>
+    </div>
+
+    <div class="admin__data-grid-wrap">
+        <table class="data-grid">
+            <thead>
+                <tr>
+                    <th class="data-grid-th">ID#</th>
+                    <th class="data-grid-th">Email</th>
+                    <th class="data-grid-th">Full name</th>
+                    <th class="data-grid-th">Order id</th>
+                    <th class="data-grid-th">Order item id</th>
+                    <th class="data-grid-th">Order item sku</th>
+                    <th class="data-grid-th">Commission type</th>
+                    <th class="data-grid-th">Commission value</th>
+                    <th class="data-grid-th">Commission result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+require(["jquery", "ko", "mage/url"], function($, ko, urlBuilder) {
+    $(document).ready(function() {
+
+    });
+});
+</script>

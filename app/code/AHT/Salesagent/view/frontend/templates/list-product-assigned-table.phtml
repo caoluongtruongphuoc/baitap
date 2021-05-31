@@ -1,0 +1,51 @@
+<?php
+    $list = $block->getCollection();
+    $helper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+?>
+
+<div class="table-wrapper product-assigned-table">
+    <table class="data table">
+        <thead>
+            <tr>
+                <th scope="col" class="col">Product name</th>
+                <th scope="col" class="col">SKU</th>
+                <th scope="col" class="col">Url</th>
+                <th scope="col" class="col">Commission type</th>
+                <th scope="col" class="col">Commission value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($list as $product) : ?>
+            <tr>
+                <td class="col" data-th="Product name"><?= $product->getName() ?></td>
+                <td class="col" data-th="SKU"><?= $product->getSku() ?></td>
+                <td class="col" data-th="Url"><a href="<?= $product->getProductUrl() ?>">Go to</a></td>
+                <td class="col" data-th="Commission type">
+                    <?php
+                        switch ($product->getCommissionType()) :
+                            case 1:
+                                echo "Fixed";
+                                break;
+                            case 2:
+                                echo "Percent";
+                                break;
+                        endswitch
+                    ?>
+                </td>
+                <td class="col" data-th="Commission value"><?php
+                    if ($product->getCommissionType() == 1) {
+                        echo $helper->currency($product->getCommissionValue(),true,false);
+                    } else {
+                        echo number_format($product->getCommissionValue(), 2, ".", ",") . '%';
+                    }
+                    ?>
+                </td>
+            </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+</div>
+
+<?php if ($block->getPagerHtml()): ?>
+    <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+<?php endif ?>
