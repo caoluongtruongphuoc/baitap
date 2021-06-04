@@ -1,0 +1,33 @@
+<?php
+/** @var \AHT\CustomCheckout\Block\Template $block */
+$deliveryInfo = $block->getDeliveryInfo();
+?>
+
+<section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?= __('Delivery info')?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item">
+            <div class="admin__page-section-item-title">
+                <span class="title"><?= __('Delivery date')?></span>
+            </div>
+            <div class="admin__page-section-item-content">
+            <!-- code here -->
+                <?php
+                    $date = new DateTime($deliveryInfo->getDeliveryData());
+                    echo $date->format('Y/m/d');
+                ?>
+            </div>
+        </div>
+        <div class="admin__page-section-item">
+            <div class="admin__page-section-item-title">
+                <span class="title"><?= __('Delivery comment')?></span>
+            </div>
+            <div class="admin__page-section-item-content">
+            <!-- code here -->
+            <?= $deliveryInfo->getDeliveryComment()?>
+            </div>
+        </div>
+    </div>
+</section>

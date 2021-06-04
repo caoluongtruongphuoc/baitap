@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- set form -->
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor"> 
+        <plugin name="delivery_step_to_checkout" type="AHT\CustomCheckout\Plugin\Checkout\LayoutProcessorPlugin" sortOrder="20"/>
+    </type>
+
+    <!-- interface -->
+    <preference for="AHT\CustomCheckout\Api\Data\CustomFieldsInterface" type="AHT\CustomCheckout\Model\CustomFields" />
+    <preference for="AHT\CustomCheckout\Api\CustomFieldsRepositoryInterface" type="AHT\CustomCheckout\Model\CustomFieldsRepository" />
+    <preference for="AHT\CustomCheckout\Api\CustomFieldsGuestRepositoryInterface" type="AHT\CustomCheckout\Model\CustomFieldsGuestRepository" />
+</config>
